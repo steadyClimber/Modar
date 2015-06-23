@@ -18,11 +18,22 @@ public class MainActivity extends Activity implements OnClickListener{
 
     EditText editTextN;
     EditText editTextX;
+    EditText editTextY;
     EditText pergjigja;
+
     Button btnAdd;
+    Button btnMult;
+    Button btnSub;
+    Button btnDiv;
+    Button btnMod;
+    Button btnGCD;
+    Button btnInv;
+    Button btnExGCD;
+    Button btnPow;
+    Button historyBtn;
+    Button advOptBtn;
 
-
-    String oper = "";
+    String operatori = "";
 
 
     @Override
@@ -32,18 +43,43 @@ public class MainActivity extends Activity implements OnClickListener{
 
         editTextN = (EditText) findViewById(R.id.editTextN);
         editTextX = (EditText) findViewById(R.id.editTextX);
+        editTextY = (EditText) findViewById(R.id.editTextY);
         pergjigja = (EditText) findViewById(R.id.pergjigja);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnMult = (Button) findViewById(R.id.btnMult);
+        btnSub = (Button) findViewById(R.id.btnSub);
+        btnDiv = (Button) findViewById(R.id.btnDiv);
+        btnMod = (Button) findViewById(R.id.btnMod);
+        btnGCD = (Button) findViewById(R.id.btnGCD);
+        btnInv = (Button) findViewById(R.id.btnInv);
+        btnExGCD = (Button) findViewById(R.id.btnExGCD);
+        btnPow = (Button) findViewById(R.id.btnPow);
+        historyBtn = (Button) findViewById(R.id.historyBtn);
+        advOptBtn = (Button) findViewById(R.id.advopBtn);
 
         btnAdd.setOnClickListener(this);
+        btnMult.setOnClickListener(this);
+        btnSub.setOnClickListener(this);
+        btnDiv.setOnClickListener(this);
+        btnMod.setOnClickListener(this);
+        btnGCD.setOnClickListener(this);
+        btnInv.setOnClickListener(this);
+        btnExGCD.setOnClickListener(this);
+        btnPow.setOnClickListener(this);
+        historyBtn.setOnClickListener(this);
+        advOptBtn.setOnClickListener(this);
+
 
     }
 
+
+
     @Override
     public void onClick(View v) {
-        Integer nNum = 0;
-        Integer xNum = 0;
+        Integer nNum ;
+        Integer xNum ;
+        Integer yNum ;
 
         Integer result = 0;
 
@@ -53,16 +89,21 @@ public class MainActivity extends Activity implements OnClickListener{
         }
         nNum = Integer.parseInt(editTextN.getText().toString());
         xNum = Integer.parseInt(editTextX.getText().toString());
+        yNum = Integer.parseInt(editTextY.getText().toString());
 
         switch (v.getId()) {
             case R.id.btnAdd:
-                oper = "Z=X+Y";
-                result = nNum + xNum;
+                {
+                operatori = "Z=X+Y";
+                result = ((xNum + yNum)%nNum);
+                if(result < 0) result += nNum;
+                }
                 break;
             default:
                 break;
         }
-        pergjigja.setText("3547 * 4555 - 31444 * 1245 = 1"+result);
+        pergjigja.getText().clear();
+        pergjigja.setText(""+result);
 
     }
 
