@@ -1,0 +1,260 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/RelativeLayout">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextN"
+        android:editable="true"
+        android:numeric="integer"
+        android:hint=" Enter a prime number"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X : "
+        android:id="@+id/textViewX"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_alignBottom="@+id/editTextX"
+        android:layout_toLeftOf="@+id/editTextY"
+        android:layout_toStartOf="@+id/editTextY" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y : "
+        android:id="@+id/textViewY"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/editTextY"
+        android:layout_alignRight="@+id/textViewX"
+        android:layout_alignEnd="@+id/textViewX"
+        android:layout_alignParentLeft="@id/editTextY"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextX"
+        android:editable="true"
+        android:numeric="integer"
+        android:hint=" enter X"
+        android:layout_below="@+id/editTextN"
+        android:layout_toRightOf="@+id/textViewY"
+        android:layout_toEndOf="@+id/textViewY" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextY"
+        android:editable="true"
+        android:numeric="integer"
+        android:hint=" enter Y"
+        android:layout_below="@+id/textViewX"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/pergjigja"
+        android:editable="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusableInTouchMode="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#FF0000"
+        android:background="@drawable/pergjigja"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_below="@+id/textViewY"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mod n : "
+        android:id="@+id/textView2"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_above="@+id/editTextX"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:layout_gravity="center"
+        android:weightSum="6"
+        android:layout_below="@+id/pergjigja"><!--ndan tablelayout ne 6 pjese-->
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"><!--ben qe lartesia e tablerow te jete sa 1/6 e tablelayout-->
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z=X+Y"
+                android:id="@+id/btnAdd"
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z=X*Y"
+                android:id="@+id/btnMult"
+                android:layout_column="7"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z=X-Y"
+                android:id="@+id/btnSub"
+                android:layout_column="8"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z=[X/Y]"
+                android:id="@+id/btnDiv"
+                android:layout_column="9"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z = X mod n"
+                android:id="@+id/btnMod"
+                android:layout_column="18"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z = gcd(X , Y)"
+                android:id="@+id/btnGCD"
+                android:layout_column="24"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z = X^-1 mod n"
+                android:id="@+id/btnInv"
+                android:layout_column="30"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"><!--ben qe lartesia e tablerow te jete sa 1/6 e tablelayout-->
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z = B.Bezu(X , Y)"
+                android:id="@+id/btnExGCD"
+                android:layout_column="34"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Z = (X ^ Y) mod n"
+                android:id="@+id/btnPow"
+                android:layout_column="38"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:id="@+id/historyBtn"
+                android:layout_column="43"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Advanced Options"
+                android:id="@+id/advopBtn"
+                android:layout_column="47"
+                android:layout_weight="1"
+                android:background="@drawable/red_button"
+                style="@style/button_text"/>
+        </TableRow>
+    </TableLayout>
+
+
+</RelativeLayout>
