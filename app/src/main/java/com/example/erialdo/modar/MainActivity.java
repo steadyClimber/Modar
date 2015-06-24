@@ -138,6 +138,15 @@ public class MainActivity extends Activity implements OnClickListener{
 
                 result = res.intValue();
             }
+            case R.id.btnPow: {
+                BigInteger x,y,n;
+                x = BigInteger.valueOf(xNum);
+                y = BigInteger.valueOf(yNum);
+                n = BigInteger.valueOf(nNum);
+                BigInteger res = x.modPow(y,n);
+
+                result = res.intValue();
+            }
 
             default:
                 break;
@@ -156,7 +165,7 @@ public class MainActivity extends Activity implements OnClickListener{
             pergjigja.setText(result + "=" + xNum + "*" + yNum + " mod(" + nNum + ")");
 
         }else if(v.getId() == R.id.btnMod) {
-            pergjigja.setText(result+"="+xNum+"mod "+yNum+"  mod("+nNum+")");
+            pergjigja.setText(result+"="+xNum+" mod "+yNum+"  mod("+nNum+")");
 
         }else if(v.getId() == R.id.btnGCD) {
             pergjigja.setText(result+" = gcd( "+xNum+", "+yNum+" )");
@@ -166,6 +175,8 @@ public class MainActivity extends Activity implements OnClickListener{
 
         }else if(v.getId() == R.id.btnExGCD) {
             pergjigja.setText(xNum+"*("+a+") + "+yNum+"*("+b+") = "+result);
+        }else if(v.getId() == R.id.btnPow) {
+            pergjigja.setText(result+" = "+xNum+"^"+yNum+" mod("+nNum+")");
         }else
         pergjigja.setText(""+result);
 
