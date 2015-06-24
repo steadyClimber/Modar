@@ -83,9 +83,6 @@ public class MainActivity extends Activity implements OnClickListener{
         Integer xNum ;
         Integer yNum ;
 
-        Integer uNum;
-        Integer vNum;
-
         Integer result = 0 ;
 
         if(TextUtils.isEmpty(editTextN.getText().toString())
@@ -98,6 +95,7 @@ public class MainActivity extends Activity implements OnClickListener{
         xNum = Integer.parseInt(editTextX.getText().toString());
         yNum = Integer.parseInt(editTextY.getText().toString());
 
+        int a=0,b=0;
         switch (v.getId()) {
             case R.id.btnAdd: {
                 result = ((xNum + yNum)%nNum);
@@ -127,7 +125,10 @@ public class MainActivity extends Activity implements OnClickListener{
                 result=gcd(xNum,yNum);
             }break;
             case R.id.btnExGCD: {
-
+                int vals[]=extendedGCD(xNum,yNum);
+                a = vals[1];
+                b = vals[2];
+                result = gcd(xNum,yNum);
             }break;
             case R.id.btnInv: {
                 BigInteger x,n;
@@ -157,10 +158,14 @@ public class MainActivity extends Activity implements OnClickListener{
         }else if(v.getId() == R.id.btnMod) {
             pergjigja.setText(result+"="+xNum+"mod "+yNum+"  mod("+nNum+")");
 
-        }else if(v.getId()==R.id.btnGCD) {
+        }else if(v.getId() == R.id.btnGCD) {
             pergjigja.setText(result+" = gcd( "+xNum+", "+yNum+" )");
+
         }else if(v.getId()==R.id.btnInv) {
             pergjigja.setText(result+" = "+xNum+"^-1 mod("+nNum+")");
+
+        }else if(v.getId() == R.id.btnExGCD) {
+            pergjigja.setText(xNum+"*("+a+") + "+yNum+"*("+b+") = "+result);
         }else
         pergjigja.setText(""+result);
 
@@ -180,6 +185,22 @@ public class MainActivity extends Activity implements OnClickListener{
         return 0;
     }
 
+
+    //  return array [d, a, b] such that d = gcd(p, q), ap + bq = d
+    static int[] extendedGCD(int p, int q) {
+        if (q == 0)
+            return new int[] { p, 1, 0 };
+
+        int[] vals = extendedGCD(q, p % q);
+        int d = vals[0];
+        int a = vals[2];
+        int b = vals[1] - (p / q) * vals[2];
+        return new int[] { d, a, b };
+    }
+
+
+
+/*
     /**
      * Calculates the extended GCD.
      * @param aux the helper array
@@ -188,7 +209,7 @@ public class MainActivity extends Activity implements OnClickListener{
      * @return the greatest common divisor of the a & b. GCD(a,b) = u*a + v*b. Stores m and n in the helper array.
      *
      */
-    public static  int  extendedGCD(int[] aux, int a, int b) {
+   /* public static  int  extendedGCD(int[] aux, int a, int b) {
         int  tempo;
         if (a*b ==0 ){	//EXIT condition
             tempo =  a + b;
@@ -201,6 +222,9 @@ public class MainActivity extends Activity implements OnClickListener{
         }
         return tempo;
     }
+*/
+
+
 
 
     @Override
