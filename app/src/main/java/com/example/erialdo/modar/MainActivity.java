@@ -84,7 +84,9 @@ public class MainActivity extends Activity implements OnClickListener{
         Integer yNum ;
 
         Integer result = 0 ;
-
+        Integer resultInv = 0; // ruan rezultatin e inversit te numrit
+        // ky variabel i dyte u shtua per shkak se ka vetem nje obj result BigInteger
+        // pra nuk mund te kete nje objekt result BigInteger me dy vlera ne te njejten kohe
         if(TextUtils.isEmpty(editTextN.getText().toString())
                 || TextUtils.isEmpty(editTextX.getText().toString())
                 || TextUtils.isEmpty(editTextY.getText().toString())) {
@@ -136,7 +138,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 n = BigInteger.valueOf(nNum);
                 BigInteger res = x.modInverse(n);
 
-                result = res.intValue();
+                resultInv = res.intValue();
             }
             case R.id.btnPow: {
                 BigInteger x,y,n;
@@ -159,19 +161,19 @@ public class MainActivity extends Activity implements OnClickListener{
             pergjigja.setText(result + "=" + xNum + "-" + yNum + " mod(" + nNum + ")");
 
         }else if(v.getId() == R.id.btnDiv) {
-            pergjigja.setText(result + "=[" +xNum+ "/" + yNum + "]" );
+            pergjigja.setText(result + " = [" +xNum+ "/" + yNum + "]" );
 
         }else if(v.getId() == R.id.btnMult){
             pergjigja.setText(result + "=" + xNum + "*" + yNum + " mod(" + nNum + ")");
 
         }else if(v.getId() == R.id.btnMod) {
-            pergjigja.setText(result+"="+xNum+" mod "+yNum+"  mod("+nNum+")");
+            pergjigja.setText(result+"="+xNum+" Mod "+yNum+"  mod("+nNum+")");
 
         }else if(v.getId() == R.id.btnGCD) {
             pergjigja.setText(result+" = gcd( "+xNum+", "+yNum+" )");
 
         }else if(v.getId()==R.id.btnInv) {
-            pergjigja.setText(result+" = "+xNum+"^-1 mod("+nNum+")");
+            pergjigja.setText(resultInv+" = "+xNum+"^-1 mod("+nNum+")");
 
         }else if(v.getId() == R.id.btnExGCD) {
             pergjigja.setText(xNum+"*("+a+") + "+yNum+"*("+b+") = "+result);
