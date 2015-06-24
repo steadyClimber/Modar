@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements OnClickListener{
@@ -88,9 +89,11 @@ public class MainActivity extends Activity implements OnClickListener{
         Integer result = 0 ;
 
         if(TextUtils.isEmpty(editTextN.getText().toString())
-                || TextUtils.isEmpty(editTextX.getText().toString())) {
+                || TextUtils.isEmpty(editTextX.getText().toString())
+                || TextUtils.isEmpty(editTextY.getText().toString())) {
             return;
         }
+
         nNum = Integer.parseInt(editTextN.getText().toString());
         xNum = Integer.parseInt(editTextX.getText().toString());
         yNum = Integer.parseInt(editTextY.getText().toString());
@@ -116,13 +119,25 @@ public class MainActivity extends Activity implements OnClickListener{
             }break;
 
             case R.id.btnMod: {
-                result = (xNum % yNum);
+                result = (xNum % yNum)%nNum;
                 if(result < 0) result += yNum;
             }break;
 
             case R.id.btnGCD: {
                 result=gcd(xNum,yNum);
+            }break;
+            case R.id.btnExGCD: {
+
+            }break;
+            case R.id.btnInv: {
+                BigInteger x,n;
+                x = BigInteger.valueOf(xNum);
+                n = BigInteger.valueOf(nNum);
+                BigInteger res = x.modInverse(n);
+
+                result = res.intValue();
             }
+
             default:
                 break;
 
@@ -130,12 +145,22 @@ public class MainActivity extends Activity implements OnClickListener{
 
         if(v.getId() == R.id.btnAdd){
             pergjigja.setText(result+"="+xNum+"+"+yNum+" mod("+nNum+")");
-        } else if(v.getId() == R.id.btnSub){
+        }else if(v.getId() == R.id.btnSub){
             pergjigja.setText(result + "=" + xNum + "-" + yNum + " mod(" + nNum + ")");
+
         }else if(v.getId() == R.id.btnDiv) {
             pergjigja.setText(result + "=[" +xNum+ "//" + yNum + "]" );
+
         }else if(v.getId() == R.id.btnMult){
             pergjigja.setText(result + "=" + xNum + "*" + yNum + " mod(" + nNum + ")");
+
+        }else if(v.getId() == R.id.btnMod) {
+            pergjigja.setText(result+"="+xNum+"mod "+yNum+"  mod("+nNum+")");
+
+        }else if(v.getId()==R.id.btnGCD) {
+            pergjigja.setText(result+" = gcd( "+xNum+", "+yNum+" )");
+        }else if(v.getId()==R.id.btnInv) {
+            pergjigja.setText(result+" = "+xNum+"^-1 mod("+nNum+")");
         }else
         pergjigja.setText(""+result);
 
