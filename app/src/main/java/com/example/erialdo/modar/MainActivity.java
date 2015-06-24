@@ -33,7 +33,6 @@ public class MainActivity extends Activity implements OnClickListener{
     Button historyBtn;
     Button advOptBtn;
 
-    String operatori = "";
 
 
     @Override
@@ -77,11 +76,11 @@ public class MainActivity extends Activity implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Integer nNum ;
+        Integer nNum = 1;
         Integer xNum ;
         Integer yNum ;
 
-        Integer result = 0;
+        Integer result = 0 ;
 
         if(TextUtils.isEmpty(editTextN.getText().toString())
                 || TextUtils.isEmpty(editTextX.getText().toString())) {
@@ -92,17 +91,35 @@ public class MainActivity extends Activity implements OnClickListener{
         yNum = Integer.parseInt(editTextY.getText().toString());
 
         switch (v.getId()) {
-            case R.id.btnAdd:
-                {
-                operatori = "Z=X+Y";
+            case R.id.btnAdd: {
                 result = ((xNum + yNum)%nNum);
                 if(result < 0) result += nNum;
-                }
-                break;
+            }break;
+
+            case R.id.btnSub: {
+                result = ((xNum - yNum)%nNum);
+                if(result < 0) result += nNum;
+            }break;
+
+            case R.id.btnMult: {
+                result = ((xNum * yNum)%nNum);
+                if(result < 0) result += nNum;
+            }break;
+
+            case R.id.btnDiv: {
+                result = (int) Math.floor(xNum / yNum);
+            }break;
+
+            case R.id.btnMod: {
+                result = (xNum % yNum);
+                if(result < 0) result += yNum;
+            }break;
+
             default:
                 break;
+
         }
-        pergjigja.getText().clear();
+
         pergjigja.setText(""+result);
 
     }
