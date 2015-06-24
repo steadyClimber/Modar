@@ -159,7 +159,7 @@ public class MainActivity extends Activity implements OnClickListener{
             pergjigja.setText(result + "=" + xNum + "-" + yNum + " mod(" + nNum + ")");
 
         }else if(v.getId() == R.id.btnDiv) {
-            pergjigja.setText(result + "=[" +xNum+ "//" + yNum + "]" );
+            pergjigja.setText(result + "=[" +xNum+ "/" + yNum + "]" );
 
         }else if(v.getId() == R.id.btnMult){
             pergjigja.setText(result + "=" + xNum + "*" + yNum + " mod(" + nNum + ")");
