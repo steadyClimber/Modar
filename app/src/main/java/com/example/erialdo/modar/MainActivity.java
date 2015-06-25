@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -87,6 +89,8 @@ public class MainActivity extends Activity implements OnClickListener{
         Integer resultInv = 0; // ruan rezultatin e inversit te numrit
         // ky variabel i dyte u shtua per shkak se ka vetem nje obj result BigInteger
         // pra nuk mund te kete nje objekt result BigInteger me dy vlera ne te njejten kohe
+
+
         if(TextUtils.isEmpty(editTextN.getText().toString())
                 || TextUtils.isEmpty(editTextX.getText().toString())
                 || TextUtils.isEmpty(editTextY.getText().toString())) {
@@ -136,10 +140,13 @@ public class MainActivity extends Activity implements OnClickListener{
                 BigInteger x,n;
                 x = BigInteger.valueOf(xNum);
                 n = BigInteger.valueOf(nNum);
-                BigInteger res = x.modInverse(n);
+                if(gcd(xNum,nNum)==1) {
+                    BigInteger res = x.modInverse(n);
 
                 resultInv = res.intValue();
+                }
             }
+
             case R.id.btnPow: {
                 BigInteger x,y,n;
                 x = BigInteger.valueOf(xNum);
@@ -149,7 +156,9 @@ public class MainActivity extends Activity implements OnClickListener{
 
                 result = res.intValue();
             }
+            case R.id.historyBtn: {
 
+            }
             default:
                 break;
 
@@ -172,15 +181,21 @@ public class MainActivity extends Activity implements OnClickListener{
         }else if(v.getId() == R.id.btnGCD) {
             pergjigja.setText(result+" = gcd( "+xNum+", "+yNum+" )");
 
-        }else if(v.getId()==R.id.btnInv) {
+        }else if(v.getId()==R.id.btnInv && (gcd(xNum,nNum)==1)) {
             pergjigja.setText(resultInv+" = "+xNum+"^-1 mod("+nNum+")");
 
         }else if(v.getId() == R.id.btnExGCD) {
             pergjigja.setText(xNum+"*("+a+") + "+yNum+"*("+b+") = "+result);
         }else if(v.getId() == R.id.btnPow) {
             pergjigja.setText(result+" = "+xNum+"^"+yNum+" mod("+nNum+")");
+        }else if(v.getId() == R.id.historyBtn)
+        {
+            pergjigja.setText("history not implemented yet");
+        }else if(v.getId() == R.id.advopBtn)
+        {
+            pergjigja.setText("Advanced Options not implemented yet");
         }else
-        pergjigja.setText(""+result);
+            pergjigja.setText("X jo e thjeshte me n!");
 
     }
 
@@ -246,7 +261,7 @@ public class MainActivity extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-//hello
+    //hello
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
