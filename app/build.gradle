@@ -1,13 +1,14 @@
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '27.0.1'
+    compileSdkVersion 26
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.example.erialdo.modar"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -21,5 +22,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
 }
